@@ -45,7 +45,7 @@ export default function App() {
       filesInput.map((x) => formData.append('files', x.file))
       const res = await axios.post(
         process.env.NODE_ENV === 'production'
-          ? `${process.env.REACT_APP_SERVER_URL_PRO}/api/upload/uploadImages`
+          ? 'api/upload/uploadImages'
           : `${process.env.REACT_APP_SERVER_URL_DEV}/api/upload/uploadImages`,
         formData,
         {
@@ -88,7 +88,7 @@ export default function App() {
       try {
         const res = await fetch(
           process.env.NODE_ENV === 'production'
-            ? `${process.env.REACT_APP_SERVER_URL_PRO}/api/getImages`
+            ? 'api/getImages'
             : `${process.env.REACT_APP_SERVER_URL_DEV}/api/getImages`,
           {
             signal: controller.signal,
@@ -195,7 +195,7 @@ export default function App() {
                 <img
                   src={
                     process.env.NODE_ENV === 'production'
-                      ? `${process.env.REACT_APP_SERVER_URL_PRO}/${x.path}`
+                      ? x.path
                       : `${process.env.REACT_APP_SERVER_URL_DEV}/${x.path}`
                   }
                   alt=''

@@ -26,19 +26,14 @@ app.post(
     }
     const images = []
     for await (const x of req.files) {
-      // !save by multer
-      // const image = await Image.create({
-      //   path: x.path,
-      //   originalname: x.originalname,
-      // })
-      // !save by sharp
+      // ! sharp
       const path = 'uploads/' + Date.now() + '__' + x.originalname
       await sharp(x.buffer).resize(100, 100).toFile(path)
+      // ! sharp end
       const image = await Image.create({
         path: path,
         originalname: x.originalname,
       })
-      // ! end
       images.push(image)
     }
     const maxNum = 15

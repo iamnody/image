@@ -1,7 +1,7 @@
 const multer = require('multer')
 const path = require('path')
 
-// ! save by multer
+// ! multer
 // const storage = multer.diskStorage({
 //   destination: (req, file, cb) => {
 //     cb(null, 'uploads')
@@ -10,9 +10,10 @@ const path = require('path')
 //     cb(null, Date.now() + '__' + file.originalname)
 //   },
 // })
-// ! save by sharp
+// ! multer end
+// ! sharp
 const storage = multer.memoryStorage()
-// ! end
+// ! sharp end
 
 const fileFilter = (req, file, cb) => {
   const exts = /jpg|jpeg|png/
